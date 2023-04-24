@@ -5,7 +5,7 @@ using UnityEditor.UI;
 using TMPro;
 public class enemyBehavior : MonoBehaviour
 {
-    public const float speed = 2.5f;
+    public float speed = 2.5f;
     public string question = "0";
     public GameObject player;
     public string answer = "-1";
@@ -19,10 +19,27 @@ public class enemyBehavior : MonoBehaviour
         MoveEnemy();
     }
 
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.gameObject.tag == "projectile" && other.gameObject.GetComponent<Projectile>().answer == answer) 
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject == player)
+        {
+            Destroy(player);
+        }
+    }
 
     private void MoveEnemy()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed);
+        if (player != null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed);
+        }  
     }
 
     public void Set(string question, string answer)
@@ -38,11 +55,5 @@ public class enemyBehavior : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void OnMouseUp()
-    {
-        string _answer = GameObject.Find("GameManager").GetComponent<gameManager>().value;
-        GetAnswer(_answer);
     }
 }

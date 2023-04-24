@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
             case State.Dash:
                 float dashSpeedDropMultiplier = 2f;
                 curDashSpeed -= curDashSpeed * dashSpeedDropMultiplier * Time.deltaTime;
-                float dashSpeedMinimum = 10f;
+                float dashSpeedMinimum = 250f; //Напомнить Данзану так не делать
                 if (curDashSpeed < dashSpeedMinimum)
                 {
                     state = State.Normal;

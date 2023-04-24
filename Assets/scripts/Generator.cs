@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
-    public string str;
-    public string ans;
+    public string str, ans;
     // Start is called before the first frame update
     void Start()
     {

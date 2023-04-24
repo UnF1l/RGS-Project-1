@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-	[SerializeField] private float speed = 10f;			// Скорость снаряда
-	[SerializeField] private float lifeTime = 3f;		// Время жизни снаряда в секундах
-	[SerializeField] private Rigidbody2D rb;			// Снаряд
+	[SerializeField] private float speed = 10f;			
+	[SerializeField] private float lifeTime = 3f;		
+	[SerializeField] private Rigidbody2D rb;
 
+	public string answer = "-1";
 	private void Start()
 	{
-		Destroy(gameObject, lifeTime);					// Удаление снаряда по времени жизни
+        answer = GameObject.Find("GameManager").GetComponent<gameManager>().value; ;
+		Destroy(gameObject, lifeTime);					
 	}
+    /*private void OnTriggerEnter2D(Collider2D collider)
+    {
+		if (collider.gameObject.CompareTag("Room"))
+        {
+            Destroy(gameObject);
+        }
+    }*/
 
-	private void FixedUpdate()
+    private void FixedUpdate()
 	{
-		rb.velocity = transform.up * speed;				// Движение снаряда
+		rb.velocity = transform.up * speed;				
 	}
 
 	
