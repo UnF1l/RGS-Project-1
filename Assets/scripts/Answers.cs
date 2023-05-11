@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Answers : MonoBehaviour
 {
-    private int[] ans = new int[5];
+    private string[] ans = new string[5];
     public int select = 0;
     public gameManager gameManager;
     int selectNew = 0;
@@ -15,21 +15,20 @@ public class Answers : MonoBehaviour
         //fill(-1);
     }
 
-    public void fill(int answer)
+    public void fill(string[] answers)
     {
-        int pos = Random.Range(0, 5);
-        for (int i = 0; i < ans.Length; i++)
+        List<int> poss = new List<int>() { 1, 2, 3, 4, 0};
+        foreach(string answer in answers) 
         {
-            if(i == pos)
-            {
-                ans[i] = answer;
-                transform.GetChild(i).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = ans[i].ToString();
-            }
-            else
-            {
-                ans[i] = Random.Range(0, 100);
-                transform.GetChild(i).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = ans[i].ToString();
-            }  
+            int pos = Random.Range(0, poss.Count);
+            ans[poss[pos]] = answer;
+            transform.GetChild(poss[pos]).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = ans[poss[pos]];
+            poss.RemoveAt(pos);
+        }
+        foreach(int ost in poss)
+        {
+            ans[ost] = Random.Range(0, 100).ToString();
+            transform.GetChild(ost).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = ans[ost];
         }
         transform.GetChild(0).gameObject.SetActive(true);
         gameManager.GetComponent<gameManager>().value = ans[0].ToString();
@@ -59,6 +58,6 @@ public class Answers : MonoBehaviour
         transform.GetChild(select).gameObject.SetActive(false);
         select = sel;
         transform.GetChild(select).gameObject.SetActive(true);
-        gameManager.GetComponent<gameManager>().value = ans[select].ToString();
+        gameManager.GetComponent<gameManager>().value = ans[select];
     }
 }

@@ -12,7 +12,15 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;     
     [SerializeField] private Transform firingPoint;
     private float angle;
-    
+    private bool canShoot = true;
+    public float delay;
+
+    IEnumerator wait(float timeInSec)
+    {
+        yield return new WaitForSeconds(timeInSec);
+        canShoot = true;
+    }
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -26,12 +34,13 @@ public class Weapon : MonoBehaviour
         angle = Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x) * Mathf.Rad2Deg - 90f;
       
 
-		if (Input.GetMouseButtonDown(0))
+		if ((Input.GetMouseButtonDown(0))&&(canShoot))
 		{
             shoot();
+            canShoot = false;
+            StartCoroutine(wait(delay));
 		}
     }
-
     
     private void shoot()
 	{
