@@ -14,15 +14,15 @@ public class Projectile : MonoBehaviour
         answer = GameObject.Find("GameManager").GetComponent<gameManager>().value; ;
 		Destroy(gameObject, lifeTime);					
 	}
-    /*private void OnTriggerEnter2D(Collider2D collider)
-    {
-		if (collider.gameObject.CompareTag("Room"))
-        {
-            Destroy(gameObject);
-        }
-    }*/
+	private void OnTriggerEnter2D(Collider2D collider)
+	{
+		if (collider.gameObject.CompareTag("Room") || collider.gameObject.CompareTag("Enemy"))
+		{
+			Destroy(gameObject);
+		}
+	}
 
-    private void FixedUpdate()
+	private void FixedUpdate()
 	{
 		rb.velocity = transform.up * speed;				
 	}

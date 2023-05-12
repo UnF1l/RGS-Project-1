@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +6,8 @@ public class PowerUpFreeze : MonoBehaviour
 {
 	private Rigidbody2D rb;
 
-	[SerializeField] private float duration = 5f; // Длительность замедления врагов
-	[SerializeField] private float freezeSpeed = 100f; // Скорость врагов после замедления
+	[SerializeField] private float duration = 5f; // Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ Р·Р°РјРµРґР»РµРЅРёСЏ РІСЂР°РіРѕРІ
+	[SerializeField] private float freezeSpeed = 100f; // РЎРєРѕСЂРѕСЃС‚СЊ РІСЂР°РіРѕРІ РїРѕСЃР»Рµ Р·Р°РјРµРґР»РµРЅРёСЏ
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -24,14 +24,14 @@ public class PowerUpFreeze : MonoBehaviour
 
 	IEnumerator freeze(Collider2D collision)
 	{
-		// Уменьшить скорость передвижения врагам до freezeSpeed
-		// (Код)
+		// РЈРјРµРЅСЊС€РёС‚СЊ СЃРєРѕСЂРѕСЃС‚СЊ РїРµСЂРµРґРІРёР¶РµРЅРёСЏ РІСЂР°РіР°Рј РґРѕ freezeSpeed
+		// (РљРѕРґ)
 		Debug.Log("Freeze");
-		GetComponent<SpriteRenderer>().enabled = false;     // Отключение видимости
-		GetComponent<CircleCollider2D>().enabled = false;   // Отключение колайдера
+		GetComponent<SpriteRenderer>().enabled = false;     // РћС‚РєР»СЋС‡РµРЅРёРµ РІРёРґРёРјРѕСЃС‚Рё
+		GetComponent<CircleCollider2D>().enabled = false;   // РћС‚РєР»СЋС‡РµРЅРёРµ РєРѕР»Р°Р№РґРµСЂР°
 		yield return new WaitForSeconds(duration);
-		// Вернуть стандартную скорость перелвидения врагам
-		// (Код)
+		// Р’РµСЂРЅСѓС‚СЊ СЃС‚Р°РЅРґР°СЂС‚РЅСѓСЋ СЃРєРѕСЂРѕСЃС‚СЊ РїРµСЂРµР»РІРёРґРµРЅРёСЏ РІСЂР°РіР°Рј
+		// (РљРѕРґ)
 		Debug.Log("Freeze gone");
 		Destroy(gameObject);
 	}

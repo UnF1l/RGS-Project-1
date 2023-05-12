@@ -12,7 +12,7 @@ public class enemyBehavior : MonoBehaviour
 
     private void Start()
     {
-
+        Data.enemyCount++;
     }
     private void FixedUpdate()
     {
@@ -23,6 +23,7 @@ public class enemyBehavior : MonoBehaviour
     {
         if (other.gameObject.tag == "projectile" && other.gameObject.GetComponent<Projectile>().answer == answer) 
         {
+            Data.enemyCount--;
             Destroy(gameObject);
         }
     }
