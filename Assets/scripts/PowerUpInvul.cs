@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ public class PowerUpInvul : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    [SerializeField] private float duration = 10f; // Длительность неуязвимости
+    [SerializeField] private float duration = 10f; // Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ РЅРµСѓСЏР·РІРёРјРѕСЃС‚Рё
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,14 +23,14 @@ public class PowerUpInvul : MonoBehaviour
 
     IEnumerator invulnerability(Collider2D collision)
 	{
-		// Установить игроку статус неуязвимости
-		// (Код)
+		// РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РёРіСЂРѕРєСѓ СЃС‚Р°С‚СѓСЃ РЅРµСѓСЏР·РІРёРјРѕСЃС‚Рё
+		// (РљРѕРґ)
 		Debug.Log("Invulnerability");
-		GetComponent<SpriteRenderer>().enabled = false;     // Отключение видимости
-		GetComponent<CircleCollider2D>().enabled = false;   // Отключение колайдера
+		GetComponent<SpriteRenderer>().enabled = false;     // РћС‚РєР»СЋС‡РµРЅРёРµ РІРёРґРёРјРѕСЃС‚Рё
+		GetComponent<CircleCollider2D>().enabled = false;   // РћС‚РєР»СЋС‡РµРЅРёРµ РєРѕР»Р°Р№РґРµСЂР°
 		yield return new WaitForSeconds(duration);
-		// Убрать у игрока статус неуязвимости
-		// (Код)
+		// РЈР±СЂР°С‚СЊ Сѓ РёРіСЂРѕРєР° СЃС‚Р°С‚СѓСЃ РЅРµСѓСЏР·РІРёРјРѕСЃС‚Рё
+		// (РљРѕРґ)
 		Debug.Log("Invulnerability gone");
 		Destroy(gameObject);
 	}
