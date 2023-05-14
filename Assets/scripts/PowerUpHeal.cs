@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +16,7 @@ public class PowerUpHeal : MonoBehaviour
 		GameObject whatHit = collision.gameObject;
 		if (whatHit.CompareTag("Player"))
 		{
-			// Присвоить переменной ХП игрока максимальное значение
+			// РџСЂРёСЃРІРѕРёС‚СЊ РїРµСЂРµРјРµРЅРЅРѕР№ РҐРџ РёРіСЂРѕРєР° РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
 			Debug.Log("Player heal");
 			Destroy(gameObject);
 		}

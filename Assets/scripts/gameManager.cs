@@ -15,7 +15,7 @@ public class gameManager : MonoBehaviour
     {
         Gen = GetComponent<Generator>();
         answers = GameObject.Find("Answers").GetComponent<Answers>();
-        enemyBehavior[] test = new enemyBehavior[1] { GameObject.Find("enemy").GetComponent<enemyBehavior>() };
+        enemyBehavior[] test = new enemyBehavior[2] { GameObject.Find("enemy").GetComponent<enemyBehavior>(), GameObject.Find("enemy1").GetComponent<enemyBehavior>() };
         EnemyGen(test);
     }
     void EnemyGen(enemyBehavior[] enemies)

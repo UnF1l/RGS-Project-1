@@ -25,7 +25,7 @@ public class PowerUpSpeed : MonoBehaviour
 
 	IEnumerator SpeedUp(Collider2D collision)
 	{
-
+		
 		Debug.Log(("Speed up"));
 		GetComponent<SpriteRenderer>().enabled = false;	
 		GetComponent<CircleCollider2D>().enabled = false;	
