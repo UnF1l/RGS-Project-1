@@ -23,15 +23,13 @@ public class PowerUpInvul : MonoBehaviour
 
     IEnumerator invulnerability(Collider2D collision)
 	{
-		// Установить игроку статус неуязвимости
-		// (Код)
 		Debug.Log("Invulnerability");
-		GetComponent<SpriteRenderer>().enabled = false;     // Отключение видимости
+		Data.playerState = "Invulnerabil";
+        GetComponent<SpriteRenderer>().enabled = false;     // Отключение видимости
 		GetComponent<CircleCollider2D>().enabled = false;   // Отключение колайдера
 		yield return new WaitForSeconds(duration);
-		// Убрать у игрока статус неуязвимости
-		// (Код)
-		Debug.Log("Invulnerability gone");
+        Data.playerState = "Normal";
+        Debug.Log("Invulnerability gone");
 		Destroy(gameObject);
 	}
 }

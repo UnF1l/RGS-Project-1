@@ -12,7 +12,6 @@ public class enemyBehavior : MonoBehaviour
 
     private void Start()
     {
-        Data.enemyCount++;
     }
     private void FixedUpdate()
     {
@@ -23,7 +22,7 @@ public class enemyBehavior : MonoBehaviour
     {
         if (other.gameObject.tag == "projectile" && other.gameObject.GetComponent<Projectile>().answer == answer) 
         {
-            Data.enemyCount--;
+            Data.enemies.Remove(this);
             Destroy(gameObject);
         }
     }
@@ -31,7 +30,9 @@ public class enemyBehavior : MonoBehaviour
     {
         if(collision.gameObject == player)
         {
-            Destroy(player);
+            Data.PlayerHP--;
+            Debug.Log(Data.PlayerHP);
+            if (Data.PlayerHP <= 0) Destroy(player);
         }
     }
 
@@ -40,7 +41,8 @@ public class enemyBehavior : MonoBehaviour
         if (player != null)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed);
-        }  
+        }
+        else GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
     }
 
     public void Set(string question, string answer)
@@ -48,13 +50,5 @@ public class enemyBehavior : MonoBehaviour
         this.question = question;
         this.answer = answer;
         GetComponentInChildren<TextMeshProUGUI>().text = question;
-    }
-
-    public void GetAnswer(string _answer)
-    {
-        if (_answer == answer)
-        {
-            Destroy(gameObject);
-        }
     }
 }

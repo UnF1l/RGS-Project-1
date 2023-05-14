@@ -7,7 +7,7 @@ public class PowerUpSpeed : MonoBehaviour
 	private Rigidbody2D rb;
 
 	[SerializeField] private float duration = 5f; 
-	[SerializeField] private float speedInc = 100f; 
+	[SerializeField] private float multiplier = 1.5f; 
 
     void Start()
     {
@@ -19,18 +19,22 @@ public class PowerUpSpeed : MonoBehaviour
         GameObject whatHit = collision.gameObject;
 		if (whatHit.CompareTag("Player"))
 		{
-			StartCoroutine(SpeedUp(collision));
+			StartCoroutine(SpeedUp(whatHit));
 		}
 	}
 
-	IEnumerator SpeedUp(Collider2D collision)
+	IEnumerator SpeedUp(GameObject player)
 	{
 		
 		Debug.Log(("Speed up"));
 		GetComponent<SpriteRenderer>().enabled = false;	
-		GetComponent<CircleCollider2D>().enabled = false;	
-		yield return new WaitForSeconds(duration);
-		Debug.Log("Speed up gone");
+		GetComponent<CircleCollider2D>().enabled = false;
+		player.GetComponent<PlayerMovement>().moveSpeed *= multiplier;
+        player.GetComponent<PlayerMovement>().dashSpeed *= multiplier;
+        yield return new WaitForSeconds(duration);
+        player.GetComponent<PlayerMovement>().moveSpeed /= multiplier;
+        player.GetComponent<PlayerMovement>().dashSpeed /= multiplier;
+        Debug.Log("Speed up gone");
 		Destroy(gameObject);
 	}
 

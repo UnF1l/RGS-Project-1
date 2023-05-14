@@ -16,7 +16,7 @@ public class PowerUpHeal : MonoBehaviour
 		GameObject whatHit = collision.gameObject;
 		if (whatHit.CompareTag("Player"))
 		{
-			// Присвоить переменной ХП игрока максимальное значение
+			Data.PlayerHP = 3;
 			Debug.Log("Player heal");
 			Destroy(gameObject);
 		}

@@ -15,15 +15,16 @@ public class gameManager : MonoBehaviour
     {
         Gen = GetComponent<Generator>();
         answers = GameObject.Find("Answers").GetComponent<Answers>();
-        enemyBehavior[] test = new enemyBehavior[2] { GameObject.Find("enemy").GetComponent<enemyBehavior>(), GameObject.Find("enemy1").GetComponent<enemyBehavior>() };
-        EnemyGen(test);
+        Data.enemies.Add(GameObject.Find("enemy").GetComponent<enemyBehavior>());
+        Data.enemies.Add(GameObject.Find("enemy1").GetComponent<enemyBehavior>());
+        EnemyGen();
     }
-    void EnemyGen(enemyBehavior[] enemies)
+    void EnemyGen()
     {
-        string[] ans = new string[enemies.Length];
-        for(int i = 0; i < enemies.Length; i++) {
+        string[] ans = new string[Data.enemies.Count];
+        for(int i = 0; i < Data.enemies.Count; i++) {
             Gen.Generate();
-            enemies[i].Set(Gen.str, Gen.ans);
+            Data.enemies[i].Set(Gen.str, Gen.ans);
             ans[i] = Gen.ans;
         }
         answers.fill(ans);

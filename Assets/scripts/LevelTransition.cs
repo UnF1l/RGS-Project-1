@@ -9,7 +9,7 @@ public class LevelTransition : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		GameObject whatHit = collision.gameObject;
-		if (whatHit.CompareTag("Player") && Data.enemyCount == 0)
+		if (whatHit.CompareTag("Player") && Data.enemies.Count == 0)
 		{
 			sceneNumber = nextScene(Data.currectLevel);
 			Data.currectLevel = sceneNumber;	
@@ -25,7 +25,7 @@ public class LevelTransition : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if(Data.enemyCount == 0)
+		if(Data.enemies.Count == 0)
 		{
 			GameObject.Find("NextLevelArrow").GetComponent<SpriteRenderer>().enabled = true;
 		}
