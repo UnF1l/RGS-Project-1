@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public static class Data
 {
@@ -7,8 +8,14 @@ public static class Data
 	private static int playerHP = 3;
 	public static int PlayerHP
 	{
-		set { if(playerState != "Invulnerabil") playerHP = value; }
+		set 
+		{
+			if (playerState != "Invulnerabil")
+			{
+				playerHP = value;
+				GameObject.Find("GameManager").GetComponent<gameManager>().UpdateHP();
+			}
+		}
 		get { return playerHP; }
 	}
-	public static int currectLevel = 1;         // Номер текущей сцены
 }

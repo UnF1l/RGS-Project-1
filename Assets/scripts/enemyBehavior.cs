@@ -31,7 +31,6 @@ public class enemyBehavior : MonoBehaviour
         if(collision.gameObject == player)
         {
             Data.PlayerHP--;
-            Debug.Log(Data.PlayerHP);
             if (Data.PlayerHP <= 0) Destroy(player);
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Answers : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class Answers : MonoBehaviour
             ans[ost] = Random.Range(0, 100).ToString();
             transform.GetChild(ost).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = ans[ost];
         }
-        transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(0).gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         gameManager.GetComponent<gameManager>().value = ans[0].ToString();
     }
 
@@ -55,9 +56,9 @@ public class Answers : MonoBehaviour
     }
     void ChangeSelect(int sel)
     {
-        transform.GetChild(select).gameObject.SetActive(false);
+        transform.GetChild(select).gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
         select = sel;
-        transform.GetChild(select).gameObject.SetActive(true);
+        transform.GetChild(select).gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         gameManager.GetComponent<gameManager>().value = ans[select];
     }
 }

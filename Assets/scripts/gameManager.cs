@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
 {
-    public Button[] arrBtn = new Button[10];
+    public List<GameObject> HPs;
     public string value = "0";
     Generator Gen;
     Answers answers;
@@ -28,5 +28,16 @@ public class gameManager : MonoBehaviour
             ans[i] = Gen.ans;
         }
         answers.fill(ans);
+    }
+    public void UpdateHP()
+    {
+        foreach(GameObject hp in HPs)
+        {
+            if (Data.PlayerHP >= Convert.ToInt32(hp.name))
+            {
+                hp.SetActive(true);
+            }
+            else hp.SetActive(false);
+        }
     }
 }

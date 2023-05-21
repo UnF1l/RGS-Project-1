@@ -11,8 +11,7 @@ public class LevelTransition : MonoBehaviour
 		GameObject whatHit = collision.gameObject;
 		if (whatHit.CompareTag("Player") && Data.enemies.Count == 0)
 		{
-			sceneNumber = nextScene(Data.currectLevel);
-			Data.currectLevel = sceneNumber;	
+			sceneNumber = nextScene(SceneManager.GetActiveScene().buildIndex);	
 			changeScene(sceneNumber);
 		}
 	}
