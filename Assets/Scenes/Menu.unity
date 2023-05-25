@@ -7354,10 +7354,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
-  mainMenu: {fileID: 1457998522}
-  backgroundImage: {fileID: 1905779350}
-  backToMainMenuButton: {fileID: 1740035012}
-  backToPauseMenuButton: {fileID: 2075095098}
 --- !u!114 &1095954708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12855,7 +12851,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Name
+  m_text: Brainstorm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91b1733cf2ef2b242bc32d11bdcc6056, type: 2}
   m_sharedMaterial: {fileID: -3204847758949822247, guid: 91b1733cf2ef2b242bc32d11bdcc6056, type: 2}
@@ -12918,7 +12914,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -74.67946, y: 0, z: -72.27045, w: 0}
+  m_margin: {x: -85.56441, y: 0, z: -95.96124, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

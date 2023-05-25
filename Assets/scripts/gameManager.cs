@@ -17,6 +17,7 @@ public class gameManager : MonoBehaviour
         answers = GameObject.Find("Answers").GetComponent<Answers>();
         Data.enemies.Add(GameObject.Find("enemy").GetComponent<enemyBehavior>());
         Data.enemies.Add(GameObject.Find("enemy1").GetComponent<enemyBehavior>());
+        Data.enemies.Add(GameObject.Find("RangeEnemy").GetComponent<enemyBehavior>());
         EnemyGen();
     }
     void EnemyGen()

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UI;
 using TMPro;
 public class enemyBehavior : MonoBehaviour
 {
@@ -9,10 +8,11 @@ public class enemyBehavior : MonoBehaviour
     public string question = "0";
     public GameObject player;
     public string answer = "-1";
-
-    private void Start()
+    void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
     }
+
     private void FixedUpdate()
     {
         MoveEnemy();
