@@ -16,7 +16,7 @@ public class PowerUpHeal : MonoBehaviour
 		GameObject whatHit = collision.gameObject;
 		if (whatHit.CompareTag("Player"))
 		{
-			Data.PlayerHP = 3;
+			Data.PlayerHP += 1;
 			Debug.Log("Player heal");
 			Destroy(gameObject);
 		}

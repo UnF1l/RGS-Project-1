@@ -13,9 +13,17 @@ public class RangeEnemyBahavior : enemyBehavior
 
     void Update()
     {
+        MoveEnemy();
+    }
+
+    public override void MoveEnemy()
+    {
         if (player != null)
         {
+            animator.SetBool("isMove", true);
             float distanceToPlayer = Vector2.Distance(player.transform.position, transform.position);
+            if (player.transform.position.x > transform.position.x) GetComponentInChildren<SpriteRenderer>().flipX = false;
+            else GetComponentInChildren<SpriteRenderer>().flipX = true;
             if (distanceToPlayer <= shootingRange && nextFireTime < Time.time)
             {
                 Instantiate(projectile, firingPoint.transform.position, Quaternion.identity);
@@ -24,7 +32,7 @@ public class RangeEnemyBahavior : enemyBehavior
         }
     }
 
-	private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
 	{
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, shootingRange);

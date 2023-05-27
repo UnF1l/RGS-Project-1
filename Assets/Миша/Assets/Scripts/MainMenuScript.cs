@@ -6,6 +6,7 @@ public class MainMenuScript : MonoBehaviour
 {
     public void PlayGame()
     {
+        Data.restart();
         SceneManager.LoadScene("Level1");
     }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class gameManager : MonoBehaviour
     public string value = "0";
     Generator Gen;
     Answers answers;
+    public GameObject player;
+    public GameObject canvas;
     void Start()
     {
         Gen = GetComponent<Generator>();
@@ -30,6 +33,10 @@ public class gameManager : MonoBehaviour
         }
         answers.fill(ans);
     }
+    void death()
+    {
+        canvas.GetComponent<EndScreenButtonManager>().EndGame();
+    }
     public void UpdateHP()
     {
         foreach(GameObject hp in HPs)
@@ -39,6 +46,11 @@ public class gameManager : MonoBehaviour
                 hp.SetActive(true);
             }
             else hp.SetActive(false);
+        }
+        if (Data.PlayerHP <= 0)
+        {
+            player.GetComponent<Animator>().SetBool("isAlive", false);
+            Invoke("death", 0.5f);
         }
     }
 }

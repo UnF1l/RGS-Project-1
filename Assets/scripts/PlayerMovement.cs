@@ -9,8 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public float accelerationTime;
     public float dashSpeed;
     private float curDashSpeed;
+    public Animator animator;
 
-    private enum State
+    public enum State
 	{
         Normal,
         Dash,
@@ -21,13 +22,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movementInputSmoothVelocity;
     private Vector2 dashDirection;
     private Vector2 lastMoveDirection;
-    private State state;
+    public State state;
 
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         state = State.Normal;
     }
     
@@ -51,11 +53,35 @@ public class PlayerMovement : MonoBehaviour
                 float moveY = Input.GetAxisRaw("Vertical");
 
                 moveDirection = new Vector2(moveX, moveY).normalized;
+                animator.SetFloat("Y", moveY);
 
-                if(moveX != 0 || moveY != 0)
-				{
+                if (moveX != 0)
+                {
                     lastMoveDirection = moveDirection;
-				}
+                    animator.SetBool("moveX", true);
+                    animator.SetBool("moveY", false);
+                    if (moveX < 0)
+                    {
+                        GetComponent<SpriteRenderer>().flipX = true;
+
+                    }
+                    else
+                    {
+                        GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                }
+                else if (moveY != 0)
+                {
+                    lastMoveDirection = moveDirection;
+                    animator.SetBool("moveX", false);
+                    animator.SetBool("moveY", true);
+                }
+                else
+                {
+                    animator.SetBool("moveX", false);
+                    animator.SetBool("moveY", false);
+                }
+
 
                 if (Input.GetKeyDown(key))
                 {
@@ -63,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
                     moveDirection = lastMoveDirection;
                     curDashSpeed = dashSpeed;
                     state = State.Dash;
+                    animator.SetBool("Dash", true);
                 }
                 break;
             case State.Dash:
@@ -71,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
                 float dashSpeedMinimum = 250f; //Напомнить Данзану так не делать
                 if (curDashSpeed < dashSpeedMinimum)
                 {
+                    animator.SetBool("Dash", false);
                     state = State.Normal;
                 }
                 break;

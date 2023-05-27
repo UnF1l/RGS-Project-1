@@ -26,9 +26,10 @@ public class enemyProjectile : MonoBehaviour
 		{
             Data.PlayerHP--;
             Destroy(gameObject);
-            Debug.Log(Data.PlayerHP);
-            if (Data.PlayerHP <= 0) Destroy(collider.gameObject);
-
+            if (Data.PlayerHP <= 0)
+            {
+                collider.gameObject.GetComponent<Animator>().SetBool("isAlive", false);
+            }
         }
     }
 }
