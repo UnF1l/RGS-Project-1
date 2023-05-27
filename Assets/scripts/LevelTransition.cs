@@ -36,7 +36,7 @@ public class LevelTransition : MonoBehaviour
 		int nextScene = -1;
 		do
 		{
-			nextScene = Random.Range(1, 4);		// Подставить актуальные значения
+			nextScene = Random.Range(1, 3);		// Подставить актуальные значения
 		} 
 		while (nextScene == curScene);
 		return nextScene;
